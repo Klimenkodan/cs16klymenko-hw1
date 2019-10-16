@@ -3,15 +3,15 @@ import java.util.InputMismatchException;
 
 public class TemperatureSeriesAnalysis {
     double[] x;
-
+    double lowest = -273;
 
     public TemperatureSeriesAnalysis() {
-        this.x = new double[] {};
+        this.x = new double[] {}
     }
 
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
-        for (int i=0; i < temperatureSeries.length; i++) {
-            if (temperatureSeries[i] < -273) {
+        for (int i = 0; i < temperatureSeries.length; i++) {
+            if (temperatureSeries[i] < lowest) {
                 throw new InputMismatchException();
             }
         }
@@ -22,7 +22,7 @@ public class TemperatureSeriesAnalysis {
     public double average() {
         checkIfEmpty();
         double sum = 0;
-        for (int i=0; i < this.x.length; i++) {
+        for (int i = 0; i < this.x.length; i++) {
             sum += this.x[i];
         }
         return sum / this.x.length;
@@ -32,8 +32,8 @@ public class TemperatureSeriesAnalysis {
         checkIfEmpty();
         double average = this.average();
         double sum = 0;
-        for (int i=0; i < this.x.length; i++) {
-            sum += Math.pow(average - this.x[i], 2);
+        for (int i = 0; i < this.x.length; i++) {
+            sum += (average - this.x[i]) * (average - this.x[i]);
         }
         return Math.sqrt(sum / this.x.length);
 
@@ -42,7 +42,7 @@ public class TemperatureSeriesAnalysis {
     public double min() {
         checkIfEmpty();
         double min = Double.POSITIVE_INFINITY;
-        for (int i=0; i< this.x.length; i++) {
+        for (int i = 0; i< this.x.length; i++) {
             if (this.x[i] < min) {
                 min = this.x[i];
             }
@@ -55,7 +55,7 @@ public class TemperatureSeriesAnalysis {
         checkIfEmpty();
         double max = Double.POSITIVE_INFINITY;
         max = max * (-1);
-        for (int i=0; i< this.x.length; i++) {
+        for (int i = 0; i< this.x.length; i++) {
             if (this.x[i] > max) {
                 max = this.x[i];
             }
@@ -78,11 +78,12 @@ public class TemperatureSeriesAnalysis {
     public double findTempClosestToValue(double tempValue) {
         checkIfEmpty();
         double min = Double.POSITIVE_INFINITY;
-        for (int i=0; i < this.x.length; i++) {
+        for (int i = 0; i < this.x.length; i++) {
             if (Math.abs(tempValue - min) > Math.abs(tempValue - this.x[i])) {
                 min = this.x[i];
             }
-            else if (Math.abs(tempValue - min) == Math.abs(tempValue - this.x[i])) {
+            else if (Math.abs(tempValue - min) == Math.abs(tempValue 
+                                                           - this.x[i])) {
                 min = Math.max(min, tempValue);
             }
         }
@@ -93,13 +94,13 @@ public class TemperatureSeriesAnalysis {
         checkIfEmpty();
         double[] less = new double[this.x.length - 1];
         int ind = 0;
-        for (int i=0; i < x.length; i++) {
+        for (int i = 0; i < x.length; i++) {
             if (x[i] < tempValue) {
                 less[ind] = x[i];
                 ind += 1;
             }
         }
-        for (int i=0; i < less.length; i++) {
+        for (int i = 0; i < less.length; i++) {
             System.out.println(less[i]);
 
         }
@@ -110,7 +111,7 @@ public class TemperatureSeriesAnalysis {
         checkIfEmpty();
         double[] less = new double[this.x.length - 1];
         int ind = 0;
-        for (int i=0; i < x.length; i++) {
+        for (int i = 0; i < x.length; i++) {
             if (x[i] > tempValue) {
                 less[ind] = x[i];
                 ind += 1;
@@ -120,17 +121,18 @@ public class TemperatureSeriesAnalysis {
     }
 
     public TempSummaryStatistics summaryStatistics() {
-        return new TempSummaryStatistics(this.average(), this.deviation(), this.min(), this.max());
+        return new TempSummaryStatistics(this.average(), this.deviation(),
+                                         this.min(), this.max());
     }
 
     public int addTemps(double... temps) {
         int len = x.length;
         double[] array = new double[(len + 1)* 2];
-        for (int k=0; k < len; k++) {
+        for (int k = 0; k < len; k++) {
             array[k] = x[k];
         }
 
-        for (int i=0; i < temps.length; i++) {
+        for (int i = 0; i < temps.length; i++) {
             array[len + i] = temps[i];
         }
         this.x = array;
