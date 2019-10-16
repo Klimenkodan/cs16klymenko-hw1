@@ -1,4 +1,4 @@
-package main;
+package ua.edu.ucu.tempseries;
 
 public final class TempSummaryStatistics {
     public double avgTemp, devTemp, minTemp, maxTemp;
