@@ -33,7 +33,7 @@ public class TemperatureSeriesAnalysis {
         double average = this.average();
         double sum = 0;
         for (int i=0; i < this.x.length; i++) {
-            sum += Math.pow((average - this.x[i]), 2);
+            sum += Math.pow(average - this.x[i], 2);
         }
         return Math.sqrt(sum / this.x.length);
 
