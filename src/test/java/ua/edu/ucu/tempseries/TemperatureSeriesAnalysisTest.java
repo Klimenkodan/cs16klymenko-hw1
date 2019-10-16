@@ -68,10 +68,10 @@ public class TemperatureSeriesAnalysisTest {
     @org.junit.Test
     public void summaryStatistics() {
         TempSummaryStatistics stat = new TempSummaryStatistics(temps1.average(), temps1.deviation(), temps1.min(), temps1.max());
-        Assert.assertEquals(stat.getAvgTemp(), temps1.average(), 0.05);
-        Assert.assertEquals(stat.getDevTemp(), temps1.deviation(), 0.05);
-        Assert.assertEquals(stat.getMinTemp(), temps1.min(), 0.05);
-        Assert.assertEquals(stat.getMaxTemp(), temps1.max(), 0.05);
+        Assert.assertEquals(stat.avgTemp, temps1.average(), 0.05);
+        Assert.assertEquals(stat.devTemp(), temps1.deviation(), 0.05);
+        Assert.assertEquals(stat.minTemp(), temps1.min(), 0.05);
+        Assert.assertEquals(stat.maxTemp(), temps1.max(), 0.05);
     }
 
     @org.junit.Test
