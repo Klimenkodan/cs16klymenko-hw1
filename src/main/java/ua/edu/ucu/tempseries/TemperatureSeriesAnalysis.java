@@ -6,7 +6,7 @@ public class TemperatureSeriesAnalysis {
     double lowest = -273;
 
     public TemperatureSeriesAnalysis() {
-        this.x = new double[] {}
+        this.x = new double[] {};
     }
 
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
