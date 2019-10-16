@@ -42,7 +42,7 @@ public class TemperatureSeriesAnalysis {
     public double min() {
         checkIfEmpty();
         double min = Double.POSITIVE_INFINITY;
-        for (int i = 0; i< this.x.length; i++) {
+        for (int i = 0; i < this.x.length; i++) {
             if (this.x[i] < min) {
                 min = this.x[i];
             }
@@ -55,7 +55,7 @@ public class TemperatureSeriesAnalysis {
         checkIfEmpty();
         double max = Double.POSITIVE_INFINITY;
         max = max * (-1);
-        for (int i = 0; i< this.x.length; i++) {
+        for (int i = 0; i < this.x.length; i++) {
             if (this.x[i] > max) {
                 max = this.x[i];
             }
