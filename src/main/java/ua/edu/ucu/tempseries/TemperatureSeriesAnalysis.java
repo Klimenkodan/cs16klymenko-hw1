@@ -2,8 +2,8 @@ package ua.edu.ucu.tempseries;
 import java.util.InputMismatchException;
 
 public class TemperatureSeriesAnalysis {
-    double[] x;
-    double lowest = -273;
+    private double[] x;
+    public static final double lowest = -273;
 
     public TemperatureSeriesAnalysis() {
         this.x = new double[] {};
