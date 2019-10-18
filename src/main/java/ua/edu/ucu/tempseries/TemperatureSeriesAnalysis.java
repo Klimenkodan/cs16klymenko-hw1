@@ -84,7 +84,7 @@ public class TemperatureSeriesAnalysis {
             }
             else if (Math.abs(tempValue - min) - Math.abs(tempValue 
                                                            - this.x[i]) < 0.05) {
-                min = Math.max(min, tempValue);
+                min = Math.max(min, this.x[i]);
             }
         }
         return min;
