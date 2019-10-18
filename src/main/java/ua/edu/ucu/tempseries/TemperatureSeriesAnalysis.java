@@ -2,8 +2,8 @@ package ua.edu.ucu.tempseries;
 import java.util.InputMismatchException;
 
 public class TemperatureSeriesAnalysis {
+    public static final double MIN_TEMP = -273;
     private double[] x;
-    public static final double lowest = -273;
 
     public TemperatureSeriesAnalysis() {
         this.x = new double[] {};
@@ -11,7 +11,7 @@ public class TemperatureSeriesAnalysis {
 
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
         for (int i = 0; i < temperatureSeries.length; i++) {
-            if (temperatureSeries[i] < lowest) {
+            if (temperatureSeries[i] < MIN_TEMP) {
                 throw new InputMismatchException();
             }
         }
@@ -82,8 +82,8 @@ public class TemperatureSeriesAnalysis {
             if (Math.abs(tempValue - min) > Math.abs(tempValue - this.x[i])) {
                 min = this.x[i];
             }
-            else if (Math.abs(tempValue - min) == Math.abs(tempValue 
-                                                           - this.x[i])) {
+            else if (Math.abs(tempValue - min) - Math.abs(tempValue 
+                                                           - this.x[i]) < 0.05) {
                 min = Math.max(min, tempValue);
             }
         }
