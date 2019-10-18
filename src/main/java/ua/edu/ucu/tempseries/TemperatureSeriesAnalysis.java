@@ -82,8 +82,8 @@ public class TemperatureSeriesAnalysis {
             if (Math.abs(tempValue - min) > Math.abs(tempValue - this.x[i])) {
                 min = this.x[i];
             }
-            else if (Math.abs(tempValue - min) - Math.abs(tempValue 
-                                                           - this.x[i]) < 0.05) {
+            else if (Math.abs(tempValue - min) == Math.abs(tempValue 
+                                                           - this.x[i])) {
                 min = Math.max(min, this.x[i]);
             }
         }
