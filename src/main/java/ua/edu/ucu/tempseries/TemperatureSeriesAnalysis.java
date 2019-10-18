@@ -80,12 +80,11 @@ public class TemperatureSeriesAnalysis {
         checkIfEmpty();
         double min = Double.POSITIVE_INFINITY;
         for (int i = 0; i < this.x.length; i++) {
-            if (Math.max(Math.abs(tempValue - min), Math.abs(tempValue - this.x[i])) - Math.min
-                (Math.abs(tempValue - min), Math.abs(tempValue - this.x[i])) MAX_DEVIATION) {
+            if (Math.abs(tempValue - min) > Math.abs(tempValue - this.x[i])) {
                 min = this.x[i];
             }
-            else if (Math.abs(tempValue - min) == Math.abs(tempValue 
-                                                           - this.x[i])) {
+            else if (Math.max(Math.abs(tempValue - min), Math.abs(tempValue - this.x[i]))
+                    - Math.min(Math.abs(tempValue - min), Math.abs(tempValue - this.x[i])) < 0.05) {
                 min = Math.max(min, this.x[i]);
             }
         }
