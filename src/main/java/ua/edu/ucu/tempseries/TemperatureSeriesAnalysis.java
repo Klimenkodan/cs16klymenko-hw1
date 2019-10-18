@@ -3,6 +3,7 @@ import java.util.InputMismatchException;
 
 public class TemperatureSeriesAnalysis {
     public static final double MIN_TEMP = -273;
+    public static final double MAX_DEVIATION = 0.05;
     private double[] x;
 
     public TemperatureSeriesAnalysis() {
@@ -79,7 +80,8 @@ public class TemperatureSeriesAnalysis {
         checkIfEmpty();
         double min = Double.POSITIVE_INFINITY;
         for (int i = 0; i < this.x.length; i++) {
-            if (Math.abs(tempValue - min) > Math.abs(tempValue - this.x[i])) {
+            if (Math.max(Math.abs(tempValue - min), Math.abs(tempValue - this.x[i])) - Math.min
+                (Math.abs(tempValue - min), Math.abs(tempValue - this.x[i])) MAX_DEVIATION) {
                 min = this.x[i];
             }
             else if (Math.abs(tempValue - min) == Math.abs(tempValue 
